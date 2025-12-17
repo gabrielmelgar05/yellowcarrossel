@@ -1,5 +1,3 @@
-// App.tsx
-
 import { useMemo, useState } from "react";
 import CoverEditor from "./components/CoverEditor";
 import CarouselEditor from "./components/CarouselEditor";
@@ -40,6 +38,7 @@ export default function App() {
 
         <div className="mt-4 flex gap-2">
           <button
+            type="button"
             onClick={() => setStep("cover")}
             className={`px-3 py-2 rounded-lg border ${
               step === "cover"
@@ -51,16 +50,14 @@ export default function App() {
           </button>
 
           <button
-            onClick={() => {
-              if (!canGoCarousel) return;
-              setStep("carousel");
-            }}
+            type="button"
+            disabled={!canGoCarousel}
+            onClick={() => setStep("carousel")}
             className={`px-3 py-2 rounded-lg border ${
               step === "carousel"
                 ? "bg-white text-black border-white"
                 : "bg-neutral-950 text-white border-neutral-800"
             } ${!canGoCarousel ? "opacity-50 cursor-not-allowed" : ""}`}
-            aria-disabled={!canGoCarousel}
             title={!canGoCarousel ? "Aprove a CAPA primeiro" : "Ir para carrossel"}
           >
             2) CARROSSEL

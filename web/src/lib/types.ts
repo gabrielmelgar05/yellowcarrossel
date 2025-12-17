@@ -1,6 +1,5 @@
 export type CoverConfig = {
   backgroundImage: string | null;
-
   profileHandle: string;
   handleColor: string;
   handleSize: number;
@@ -14,22 +13,39 @@ export type CoverConfig = {
   subtitleSize: number;
 };
 
-export type SlideLayout = "imageLeft" | "imageRight" | "imageTop" | "imageBottom";
-
-export type SlideContent = {
-  index: number; // 1..9
-  title: string;
-  subtitle: string;
-  bullets: string[];
-  layout: SlideLayout;
-  imageDataUrl: string | null;
-};
-
 export type CarouselTheme = {
   profileHandle: string;
-  bgColor: string;      // ex: "#000000"
-  textColor: string;    // ex: "#ffffff"
-  accentColor: string;  // ex: "#d2b24c" (amarelo)
+  bgColor: string;
+  textColor: string;
+  accentColor: string;
 };
 
-export type CarouselVariant = "black" | "yellow";
+export type SlideLayout = "imageTopTextBottom" | "textTopImageBottom";
+
+export type CarouselSlide = {
+  index: number;
+
+  // layout
+  layout: SlideLayout;
+
+  // toggles
+  showTitle: boolean;
+  showSubtitle: boolean;
+  bodyBold: boolean;
+
+  // content
+  title: string;
+  subtitle: string;
+  body: string;
+
+  // sizes
+  titleSize: number;
+  subtitleSize: number;
+  bodySize: number;
+
+  // image
+  imageDataUrl: string | null;
+  frameHeight: number; // px
+  imagePosX: number; // 0..100
+  imagePosY: number; // 0..100
+};
